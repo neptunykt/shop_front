@@ -1,0 +1,67 @@
+<form class="shipping-form">
+    <div class="form-group">
+      <div class="form__line">
+      <label for="name">Ваше Имя</label>
+      <input #name="ngModel" name="name" id="name" [(ngModel)]="shipping.name" type="text" class="form-control" required>
+      </div>
+      <div class="form__line">
+        <label class="shipping-form__empty-label"></label>
+      <div class="" *ngIf="name.invalid; else nameValid">
+        <div *ngIf="name.errors.required">Требуется ввести имя.</div>
+      </div>
+      <ng-template #nameValid>
+        <div class="shipping-form__valid-space"></div>
+      </ng-template>
+    </div>
+    </div>
+    <div class="form-group">
+      <div class="form__line">
+      <label>Район, область или край</label>
+      <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="shipping.addressLine1" type="text" class="form-control" required>
+      </div>
+      <div class="form__line">
+        <label class="shipping-form__empty-label"></label>
+      <div class="" *ngIf="addressLine1.invalid; else addressLine1Valid">
+        <div *ngIf="addressLine1.errors.required">Требуется ввести данные региона.</div>
+      </div>
+      <ng-template #addressLine1Valid>
+        <div class="shipping-form__valid-space"></div>
+      </ng-template>
+    </div>
+    </div>
+    <div class="form-group">
+      <div class="form__line">
+      <label>Населенный пункт</label>
+      <input #city="ngModel" name="city" [(ngModel)]="shipping.city" type="text" class="form-control" required>
+      </div>
+      <div class="form__line">
+        <label class="shipping-form__empty-label"></label>
+      <div class="" *ngIf="city.invalid; else cityValid">
+        <div *ngIf="city.errors.required">Требуется ввести населенный пункт.</div>
+      </div>
+      <ng-template #cityValid>
+        <div class="shipping-form__valid-space"></div>
+      </ng-template>
+    </div>
+    </div>
+    <div class="form-group">
+      <div class="form__line">
+      <label>Название улицы, номера дома, номер квартиры</label>
+      <input #addressLine2="ngModel" name="addressLine2" [(ngModel)]="shipping.addressLine2" type="text" class="form-control" required>
+      </div>
+      <div class="form__line">
+        <label class="shipping-form__empty-label"></label>
+      <div class="" *ngIf="addressLine2.invalid; else addressLine2Valid">
+        <div *ngIf="addressLine2.errors.required">Требуется ввести название улицы.</div>
+      </div>
+      <ng-template #addressLine2Valid>
+        <div class="shipping-form__valid-space"></div>
+      </ng-template>
+    </div>
+    </div>
+    <button
+      [disabled]="name.invalid || addressLine1.invalid || addressLine2.invalid || city.invalid"
+      (click)="placeOrder()"
+      class="btn btn--green shipping-form__btn">Заказать</button>
+  </form>
+  <project-confirm-dialog (onClickConfirm)="onConfirmed()" ></project-confirm-dialog>

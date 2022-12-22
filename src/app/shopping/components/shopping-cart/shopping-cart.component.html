@@ -1,0 +1,64 @@
+<div class="container">
+  <section class="shopping-cart">
+  <div class="shopping-cart-basket">
+    <h1>Корзина</h1>
+  </div>
+    <div class="shopping-cart__header"  *ngIf="(totalItems$ | async) > 0; else hideHeader">
+      <p >У вас {{shoppingCartTotalItems$ | async}} товаров в корзине на общую сумму {{shoppingCartTotalSum$ | async}} рублей</p>
+      <div class="shopping-cart__btn">
+        <button (click)="registerOrder()" class="btn btn--green">Оформить заказ</button>
+        <button (click)="clearShoppingCart()" class="btn btn--red">Очистить корзину</button>
+      </div>
+    </div>
+    <ng-template #hideHeader>
+      <p>У вас нет товаров в корзине</p>
+    </ng-template>
+    <div>
+    <table *ngIf="(shoppingCartPage$ | async).items.length > 0">
+      <thead>
+        <tr>
+          <th></th>
+          <th scope="col">Товар</th>
+          <th scope="col">Количество</th>
+          <th scope="col">Цена за 1 шт</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let shoppingCartItem of (shoppingCartPage$ | async).items;">
+          <td>
+            <div class="shopping-cart__img">
+              <img [src]= 'environmentUrl + shoppingCartItem.product.imageUrl' />
+            </div>
+          </td>
+          <td>{{shoppingCartItem.product.title}}</td>
+          <td>
+            <button [attr.disabled]="blockButton" (click)="onRemoveOneItem(shoppingCartItem)" class="btn--small btn--red shopping-cart__btn">-</button>
+            <input [attr.disabled]="blockInput" type="number" (input)="onInput($event, shoppingCartItem.product)"
+              [(ngModel)]="shoppingCartItem.items" (keydown)="onKeyDown($event)" [max]="20" #numberInput="ngModel"
+              class="shopping-cart__items" />
+              <button [attr.disabled]="blockButton" (click)="onAddOneItem(shoppingCartItem)"  class="btn--small btn--green shopping-cart__btn">+</button>
+            <div *ngIf="numberInput.errors?.max">
+              Максимальное значение 20
+            </div>
+          </td>
+          <td>{{shoppingCartItem.product.price}}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Итого на странице</td>
+          <td>{{(shoppingCartPage$ | async).itemsPageSum}}</td>
+          <td>{{(shoppingCartPage$ | async).totalPagePrice}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div [ngClass]="{'shopping-cart__paginator': (totalItems$ | async)>0 ,'shopping-cart__paginator__hide':(totalItems$ | async)==0 }">
+    <jw-paginator
+    [total]="totalItems$ | async"
+    [range]="paginatorRange"
+    [current]="current" 
+    (onClick)="onClickPaginator($event)"></jw-paginator>
+  </div>
+  <project-confirm-dialog (onClickConfirm)="onConfirmed()" ></project-confirm-dialog>
+</section>
+</div>

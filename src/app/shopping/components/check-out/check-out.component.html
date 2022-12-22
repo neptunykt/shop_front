@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="check-out__header">
+    <h2>Отправка заказа</h2>
+  </div>
+<div *ngIf="cart$ | async">
+<div class="check-out" *ngIf="(cart$ | async).itemsSum!=0; else emptyCart">
+  <div class="check-out__shipping-form">
+    <project-shipping-form [cart]="cart$ | async"></project-shipping-form>
+  </div>
+  <div class="check-out__shopping-cart-summary">
+    <project-shopping-cart-summary [cart]="cart$ | async"></project-shopping-cart-summary>
+  </div>
+</div>
+<ng-template #emptyCart>
+  <h2 class="check-out__empty">Ваша корзина пуста</h2>
+  </ng-template>
+</div>
+</div>

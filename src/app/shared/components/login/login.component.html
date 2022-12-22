@@ -1,0 +1,79 @@
+<jw-modal id="login__form">
+    <div class="form-group">
+        <h3>Введите логин и пароль</h3>
+        <div class="form__line">
+            <p>Логин:</p>
+            <input type="text" class="form-control" name="username" #username="ngModel" required
+                [(ngModel)]="login.username" />
+        </div>
+        <div *ngIf="username.invalid">
+            Не указано имя
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form__line">
+            <p>Пароль:</p>
+            <input type="text" class="form-control" name="password" #password="ngModel" required
+                [(ngModel)]="login.password" />
+        </div>
+        <div *ngIf="password.invalid">
+            Не указан пароль
+        </div>
+    </div>
+    <div class="form__line">
+        <div class="form-group">
+            <button class="form-control btn btn--red" (click)="onSubmitLogin()">Войти</button>
+        </div>
+        <button class="btn btn--red" (click)="openLoginRegister('register__form')">Зарегистрироваться</button>
+    </div>
+    <p>{{loginErrorMessage}}</p>
+</jw-modal>
+<jw-modal id="register__form">
+    <div class="form-group">
+        <h3>Регистрация</h3>
+        <div class="form__line">
+            <p>Логин:</p>
+            <input type="text" class="form-control" name="signinusername" #signinusername="ngModel" required
+                [(ngModel)]="signin.username" />
+        </div>
+        <div *ngIf="signinusername.invalid">
+            Не указано имя
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form__line">
+            <p>Email:</p>
+            <input type="text" class="form-control" name="signinemail" #signinemail="ngModel" required
+                [(ngModel)]="signin.email" />
+        </div>
+        <div *ngIf="signinemail.invalid">
+            Не указан email
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form__line">
+            <p>Пароль:</p>
+            <input type="text" class="form-control" name="signinpassword" #signinpassword="ngModel" required
+                [(ngModel)]="signin.password" />
+        </div>
+        <div *ngIf="signinpassword.invalid">
+            Не указан пароль
+        </div>
+    </div>
+    <p>{{registerErrorMessage}}</p>
+    <div class="form-group">
+        <div class="form__line">
+            <button class="form-control btn btn--red" (click)="onSubmitSignin()">Зарегистрироваться</button>
+        </div>
+    </div>
+</jw-modal>
+<jw-modal id="register__success">
+    <div class="modal-ok-btn">
+        <p>{{registerMessage}}</p>
+        <div class="form-group">
+            <div class="form__line">
+                <button class="form-control btn btn--red" (click)="registerOk()">Ок</button>
+            </div>
+        </div>
+    </div>
+</jw-modal>

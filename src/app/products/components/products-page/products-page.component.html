@@ -1,0 +1,22 @@
+    <project-products-filter (onClick)="onClickProductFilter($event)">
+    </project-products-filter>
+    <div class="container">
+      <h1 class="products__header">Продукты</h1>
+  <section class="products" *ngIf="products$ | async">
+    <div class="product__box" *ngFor="let product of products$ | async;">
+      <a href="#" (click)="$event.stopPropagation();$event.preventDefault();">
+          <img [src] = 'environmentUrl + product.imageUrl' alt="">
+          <h3>{{product.title}}</h3>
+          <button (click)="addToCart(product)" class="btn btn--green">Добавить в корзину</button> 
+      </a>
+      <h3>{{product.price}} РУБ</h3>
+  </div>
+  </section>
+  <div *ngIf="totalItems > 0" class="products__paginator">
+    <jw-paginator 
+    [total]="totalItems"
+    [range]="paginatorRange"
+    [current]="current"
+    (onClick)="onClickPaginator($event)"></jw-paginator>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="paginator"  #paginatorDiv>
+    <a [ngClass]="current == 1 ? {button__arrow__hide: true} : {button__arrow__show: true}" href="#" (click)="$event.stopPropagation();$event.preventDefault();onClickPage(1);">&laquo;</a>
+    <div class="paginator__inner" *ngFor="let page of pagesArray">
+        <a [ngClass]="current == page ? {button__active: true} : {button: true}" (click)="$event.stopPropagation();$event.preventDefault();onClickPage(page);"
+            href="">{{page}}</a>
+    </div>
+    <a [ngClass]="current == total ? {button__arrow__hide: true} : {button__arrow__show: true}"  href="#"
+        (click)="$event.stopPropagation();$event.preventDefault();onClickPage(total);">&raquo;</a>
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Категории продуктов</h1>
+    <section class="category">
+        <div class="category__box" *ngFor="let category of categories" (click)="onClickCategory(category);">
+            <a href="" (click)="$event.stopPropagation();$event.preventDefault();onClickCategory(category);">
+                <img src={{category.imageLink}} alt="">
+                <h4>{{category.value}}</h4>
+            </a>
+        </div>
+    </section>
+</div>

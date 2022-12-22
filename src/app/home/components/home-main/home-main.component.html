@@ -1,0 +1,29 @@
+<section class="home">
+    <div class="container">
+    <project-home-banner></project-home-banner>
+    <h1 class="home__heading">Выберите категорию магазина</h1>
+
+    <div class="home__category">
+
+        <div class="category__box">
+            <h3>Продукты</h3>
+            <p>Скидки до 30%</p>
+            <img [src]='environmentUrl + "/static/uploads/main/products.png"' alt="">
+            <a class="category__btn btn--large btn--green"  routerLink="/products">Перейти к продуктам</a>
+        </div>
+        <div class="category__box">
+            <h3>Услуги</h3>
+            <p>Скидки до 25%</p>
+            <img [src]='environmentUrl + "/static/uploads/main/services.png"' alt="">
+            <a class="category__btn btn--large btn--green" routerLink="/products">Перейти к услугам</a>
+        </div>
+        <div class="category__box">
+            <h3>Доставка</h3>
+            <p>Скидки до 25%</p>
+            <img [src]='environmentUrl + "/static/uploads/main/delivery.png"' alt="">
+            <a class="category__btn btn--large btn--green"  routerLink="/products">Перейти к доставке</a>
+        </div>
+    </div>
+</div>
+</section>
+

@@ -1,0 +1,43 @@
+.products__header{
+  text-align: center;
+  padding: 20px 0;
+}
+.products {
+    display: grid;
+    /* подогнать под размер дива и на 1 фракцию до 150 пикселей, иначе перенос на 
+    другую строку */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    padding-bottom: 20px;
+  }
+  
+  .products .product__box {
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+    background: #f7f7f7;
+  }
+
+  .products .product__box a button {
+    margin: 20px 0;
+  }
+  .products .product__box a {
+    text-decoration: none;
+  }
+  .products .product__box h3 {
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 20px;
+  }
+  
+
+  .products .product__box img {
+      height: 150px;
+      width: 150px;
+      border: 2px solid gray;
+      border-radius: 75px;
+      margin-bottom: 20px;
+  }
+  .products .products__paginator {
+    margin-top:5px;
+  }

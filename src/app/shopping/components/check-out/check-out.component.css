@@ -1,0 +1,17 @@
+.check-out {
+    display: flex;
+    align-items: center;
+}
+.check-out__shipping-form {
+    width: 50%;
+}
+.check-out__shopping-cart-summary {
+    width: 50%;
+}
+.check-out__header h2 {
+text-align: center;
+margin: 20px;
+}
+.check-out__empty {
+    text-align: center;
+}

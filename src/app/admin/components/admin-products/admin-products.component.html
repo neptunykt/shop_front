@@ -1,0 +1,48 @@
+<div class="container">
+    <section class="admin-products">
+        <div class="admin-products__header">
+        <div class="admin-products__header-inner" *ngIf="hasProducts; else hideHeader">
+            <h2>Продукты</h2>
+        </div>
+        <ng-template #hideHeader>
+            <h2>Нет продуктов</h2>
+        </ng-template>
+        <p>
+            <a routerLink="/admin-products/admin-product-add" class="btn btn--green">Новый продукт</a>
+        </p>
+    </div>
+        <div *ngIf="totalItems > 0">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Цена</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products$ | async;">
+                        <td>
+                            <div class="admin-products__img">
+                            <img [src]='environmentUrl + product.imageUrl' alt="">
+                            </div>
+                        </td>
+                        <td>{{product.title}}</td>
+                        <td>{{product.price}}</td>
+                        <td><button (click)="onProductEdit(product)" class="btn--middle btn--green">Редактировать</button>
+                            <button (click)="onProductDelete(product)" class="btn--middle btn--red">Удалить</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <div *ngIf="totalItems > 0" class="admin-products__paginator">
+        <jw-paginator
+        [total]="totalItems"
+        [range]="paginatorRange"
+        [current]="current"
+        (onClick)="onClickPaginator($event)"></jw-paginator>
+    </div>
+</div>

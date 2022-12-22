@@ -1,0 +1,42 @@
+<header class="header">
+    <!-- для отцентрирования контента -->
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">
+                <img src="../../../assets/activebox-logo.png" alt="">
+            </div>
+            <nav [ngClass]="{'nav': showLinkHorizontal,'nav-show-vertical': !showLinkHorizontal}">
+                <a routerLink=""
+                    [ngClass]="{'nav__link': showLinkHorizontal, 'nav__link-vertical': !showLinkHorizontal, 'nav__link-vertical:hover': !showLinkHorizontal }">Главная</a>
+                <a href=""
+                    [ngClass]="{'nav__link': showLinkHorizontal, 'nav__link-vertical': !showLinkHorizontal}">Категории</a>
+                    <a routerLink="/shopping-cart"
+                    [ngClass]="{'nav__link': showLinkHorizontal, 'nav__link-vertical': !showLinkHorizontal}">Корзина
+                    <span [ngClass]="{'basket__items__horizontal': showLinkHorizontal, 'basket__items__vertical': !showLinkHorizontal}" *ngIf="itemsSum!=0">({{itemsSum}})</span></a>
+                <a href="" *ngIf="!loginService.currentUser"
+                    [ngClass]="{'nav__link': showLinkHorizontal, 'nav__link-vertical': !showLinkHorizontal}"
+                    (click)="$event.stopPropagation();$event.preventDefault();  openLoginRegister('login__form')">Войти</a>
+                <div *ngIf="loginService.currentUser">
+                    <div [ngClass]="{'dropdown-horizontal': showLinkHorizontal,
+                                    'dropdown-vertical': !showLinkHorizontal}">
+                        <a href="" [ngClass]="{'nav__link-dropdown-horizontal': showLinkHorizontal,
+                            'nav__link-dropdown-vertical': !showLinkHorizontal,
+                            'nav__link-dropdown-vertical:hover': !showLinkHorizontal}">
+                            {{loginService.currentUser}}</a>
+                        <div class="dropdown-content">
+                            <a routerLink="/my-orders" class="nav__link-vertical">Мои заказы</a>
+                            <a *ngIf="checkIsAdmin()"  routerLink="/admin-orders" href="#" class="nav__link-vertical">Управление заказами</a>
+                            <a *ngIf="checkIsAdmin()"  routerLink="/admin-products" class="nav__link-vertical">Управление товарами</a>
+                            <a href="#" class="nav__link-vertical"
+                                (click)="$event.stopPropagation();$event.preventDefault();onExitLogin()">Выйти</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <button class="burger" type="button" (click)="onToggleMenu($event)">
+                <span class="burger__item">Меню</span>
+            </button>
+        </div>
+    </div>
+<project-login></project-login>
+</header>

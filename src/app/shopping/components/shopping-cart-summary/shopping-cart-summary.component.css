@@ -1,0 +1,22 @@
+.card-summary {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.card-body h4{
+    text-align: center;
+    margin: 20px 20px;
+}
+.card-summary__list-group {
+    list-style: none;
+}
+.card-summary__summary {
+    display: flex;
+}
+.summary__text {
+    width: 50%;
+}
+.summary__value {
+    width: 50%;
+}

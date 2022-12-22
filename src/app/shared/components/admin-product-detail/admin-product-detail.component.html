@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="admin-product-detail__header">
+   <h2 *ngIf="isNew; else titleEditProduct">Создание продукта</h2>
+    <ng-template #titleEditProduct>
+      <h2>Редактирование продукта</h2>
+    </ng-template>
+   <button (click)="backToProducts()" class="btn btn--green">Назад к продуктам</button>
+  </div>
+  <div *ngIf="product" class="admin-product-detail">
+    <div class="admin-product-detail__img">
+      <div>
+        <img class="detail__img" [src]="imageProduct" />
+        <div class="image-loader">
+        <project-image-loader #imageLoader (onUploadFile)="onUploadFile($event)" [folderPath]="folderPath"></project-image-loader>
+      </div>
+      </div>
+    </div>
+    <div class="admin-product-detail__inner">
+    <form #form="ngForm" (ngSubmit)="save(form.value)">
+        <div class="form-group">
+          <div class="form__line">
+          <label for="title">Название</label>
+          <input #title="ngModel" id="title" [(ngModel)]="product.title" name="title" type="text" required>
+        </div>
+        <div class="form__line">
+          <label class="admin-product-detail__empty-label"></label>
+        <div class="" *ngIf="title.invalid; else titleValid">
+          <div *ngIf="title.errors.required">Требуется ввести название.</div>
+        </div>
+        <ng-template #titleValid>
+          <div class="admin-product-detail__vaild-space"></div>
+        </ng-template>
+        </div>
+        </div>
+        <div class="form-group">
+          <div class="form__line">
+            <label for="price">Цена</label>
+            <div class="input-group">
+           <input #price="ngModel" id="price" (keypress)="onKeyPressNumbers($event)" [(ngModel)]="product.price" name="price" type="number" required price>
+         </div>
+        </div>
+        <div class="form__line">
+          <label class="admin-product-detail__empty-label"></label>
+        <div class="" *ngIf="price.invalid; else priceValid">
+          <div *ngIf="price.errors.price">Требуется ввести цену.</div>
+        </div>
+        <ng-template #priceValid>
+          <div class="admin-product-detail__vaild-space"></div>
+        </ng-template>
+        </div>
+      </div>
+        <div class="form-group" *ngIf="categories">
+          <div class="form__line">
+            <label for="category">Категория</label>
+           <select name="category"  #category="ngModel" (change)="onChangeSelect($event.target.value)" [(ngModel)]="categoryId" required>
+               <option  *ngFor="let category of categories" [value]="category.id">
+                {{category.value}}
+              </option>
+             </select>
+          </div>
+          <div class="form__line">
+            <label class="admin-product-detail__empty-label"></label>
+              <div class="" *ngIf="category.invalid; esle categoryValid">
+                <div *ngIf="category.errors.required">Требуется выбрать категорию.</div>
+              </div>
+              <ng-template #categoryValid>
+                <div class="admin-product-detail__vaild-space"></div>
+              </ng-template>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form__line">
+            <label for="imageUrl">Картинка URL</label>
+            <!--нужно при загрузке нового, когда приходит null-->
+            <input #imageUrl="ngModel" class="input__image-url"  [(ngModel)]="product.imageUrl" readonly="readonly" name="imageUrl" id="imageUrl" type="text" required>
+            <div class="" *ngIf="imageUrl.touched && imageUrl.invalid">
+            </div>
+              </div>
+              <div class="form__line">
+                <label class="admin-product-detail__empty-label"></label>
+              <div *ngIf="imageUrl.invalid; else imageUrlValid">
+                <div *ngIf="imageUrl.errors.required">Требуется вставить картинку.</div>
+              </div>
+              <ng-template #imageUrlValid>
+                <div class="admin-product-detail__vaild-space"></div>
+              </ng-template>
+              </div>
+        </div>
+        <div class="admin-product-detail__buttons">
+          <button class="btn btn--green"  [disabled]="title.invalid||price.invalid||imageUrl.invalid">Сохранить</button>
+        </div>
+      </form>
+  </div>
+   </div>
+</div>

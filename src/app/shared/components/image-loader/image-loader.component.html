@@ -1,0 +1,6 @@
+<section class="image-loader">
+  <button class="btn btn--green" (click)="openFile()">Изменить изображение
+    <input #inputFile type="file" class="image-loader__input" (change)="handle()">
+  </button>
+</section>
+<project-confirm-dialog #confirmDialog></project-confirm-dialog>

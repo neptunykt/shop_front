@@ -1,0 +1,61 @@
+jw-modal {
+  display: none;
+}
+
+jw-modal .jw-modal {
+  position: fixed;
+  /* вывод модального окна посередине экрана */
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 999;
+  max-width: 800px;
+  overflow: auto;
+}
+
+jw-modal .form__line {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+
+jw-modal .form__line p {
+  display: flex;
+  justify-items: center;
+  margin-top: 5px;
+  margin-right: 50px;
+  margin-bottom: 5px;
+}
+
+
+jw-modal .jw-modal .jw-modal-body {
+  padding: 20px;
+  background: #fff;
+  margin: 40px;
+}
+
+jw-modal .jw-modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #ddd;
+  opacity: 0.5;
+  z-index: 998;
+}
+
+body.jw-modal-open {
+  overflow: hidden;
+}
+
+jw-modal .modal-ok-btn {
+  min-height: 100px;
+  min-width: 200px
+}

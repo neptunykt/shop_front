@@ -1,0 +1,42 @@
+<div class="container">
+    <section class="order-detail">
+      <div class="order-detail__header">
+        <h2>Заказ № {{id}}</h2>
+        <button (click)="backToOrders()" class="btn btn--green">Назад к заказам</button>
+        </div>
+      <div>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Название</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Сумма</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>
+              <div class="order-detail__img">
+                <img [src]="order.imageLink" />
+              </div>
+            </td>
+            <td>{{ order.product.title }}</td>
+            <td>
+              {{order.quantity}}
+            </td>
+            <td>
+                {{order.product.price*order.quantity}}
+              </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Итого</td>
+            <td>{{quantity}}</td>
+            <td>{{totalPrice}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </section>
+    </div>

@@ -1,0 +1,44 @@
+.paginator {
+  display: flex;
+}
+.paginator a,
+.paginator__inner a {
+  display: flex;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .2s;
+  margin: 0 4px;
+}
+
+.button__active {
+  background-color: #4CAF50;
+  color: #fff;
+}
+.button {
+  background-color: #fff;
+  color: #000;
+}
+
+
+.button__arrow__show {
+  color: #000;
+  cursor: pointer;
+}
+.button__arrow__hide {
+  color: #fff;
+  cursor: default;
+}
+/* при hover исключаем класс .button_active */
+.paginator__inner a:hover:not(.button__active) {
+  background-color: #024211;
+  color: #fff;
+}
+
+.paginator__settings {
+  display: none;
+}
+
+.page {
+  display: block;
+}
+

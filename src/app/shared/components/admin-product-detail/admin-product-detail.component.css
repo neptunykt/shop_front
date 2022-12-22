@@ -1,0 +1,103 @@
+.admin-product-detail__header{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px;
+}
+
+.admin-product-detail {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin-product-detail__valid-space,.admin-product-detail__empty-label  {
+    display: block;
+    min-height: 16px;
+    max-height: 16px;
+    padding: 0;
+    margin: 0;
+}
+.image-loader {
+    margin-top: 135px;
+}
+
+.admin-product-detail__inner {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 60%;
+}
+.admin-product-detail__inner input{
+    display: block;
+    text-align: right;
+    min-width: 250px;
+    max-width: 250px;
+}
+.admin-product-detail__inner select{
+    display: block;
+    text-align: right;
+    min-width: 250px;
+    max-width: 250px;
+}
+.admin-product-detail__img {
+    width: 40%;
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+.admin-product-detail__img .detail__img {
+    display: block;
+    margin: 0 auto;
+    height: 100px;
+    width: 100px;
+    border: 2px solid gray;
+    border-radius: 50px;
+    margin: 30px auto;;
+}
+.admin-product-detail__img .img__btn {
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+        color: #fff;
+        margin: 0 auto;
+        cursor: pointer;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 8px;
+        min-width: 30px;
+        border-radius: 1px;
+        border: none;
+        transition: background-color .2s linear;
+}
+.form__line {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+.input__image-url {
+    background-color: antiquewhite;
+    border: 1px solid black;
+}
+  .form__line input[type="text"] {
+      width: 60%;
+  }
+  .form__line label {
+      width: 40%;
+  }
+.admin-product-detail__buttons{
+    margin: 40px 0;
+}
+
+/* Chrome, Safari, Edge, Opera убираем стрелки */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
